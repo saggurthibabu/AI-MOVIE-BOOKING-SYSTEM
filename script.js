@@ -25,7 +25,7 @@ window.onload = function () {
     let today = new Date().toISOString().split("T")[0];
 
     document.getElementById("date").min = today;
-    document.getElementById("date").value = today;
+    document.getElementById("date").value = "";
 
     createSeats();
 
@@ -314,6 +314,7 @@ function paymentSuccess(){
 function bookTicket(){
 
     const movie = document.getElementById("movie").value;
+    const city = document.getElementById("city").value;
     const theatre = document.getElementById("theatre").value;
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
@@ -321,6 +322,11 @@ function bookTicket(){
 
     if(movie === ""){
         alert("Please select a movie.");
+        return;
+    }
+
+    if(city === "" || theatre === "" || date === "" || time === ""){
+        alert("Please select City, Theatre, Date, and Show Time.");
         return;
     }
 
@@ -334,12 +340,10 @@ function bookTicket(){
         return;
     }
 
-    // === ఇక్కడ ఈ కోడ్ రాయాలి ===
     const containerChildren = document.querySelector(".container").children;
     for (let i = 0; i < containerChildren.length - 1; i++) {
         containerChildren[i].style.display = "none";
     }
-    // ============================
 
     document.getElementById("ticket").style.display = "block";
 
@@ -380,7 +384,6 @@ function bookTicket(){
         spread: 80,
         origin: { y: 0.6 }
     });
-
 
     document.getElementById("ticket").scrollIntoView({ behavior: 'smooth', block: 'start' });
 
