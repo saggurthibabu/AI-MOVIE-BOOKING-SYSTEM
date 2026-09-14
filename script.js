@@ -78,7 +78,7 @@ let selectedSeats = [];
 window.onload = function () {
     let today = new Date().toISOString().split("T")[0];
     document.getElementById("date").min = today;
-    document.getElementById("date"].value = "";
+    document.getElementById("date").value = "";
 
     createSeats();
     showRecommendation();
@@ -108,23 +108,22 @@ function showRecommendation(){
 function createSeats(){
     // Balcony: A (28 seats -> left 14, right 14), B-C (26 seats -> left 13, right 13) - Price 150
     createCustomSection("balconyClass", [
-        { row: "A", totalSeats: 28, leftEnd: 14, rightStart: 15, rightEnd: 28 },
-        { row: "B", totalSeats: 26, leftEnd: 13, rightStart: 14, rightEnd: 26 },
-        { row: "C", totalSeats: 26, leftEnd: 13, rightStart: 14, rightEnd: 26 }
+        { row: "A", leftEnd: 14, rightStart: 15, rightEnd: 28 },
+        { row: "B", leftEnd: 13, rightStart: 14, rightEnd: 26 },
+        { row: "C", leftEnd: 13, rightStart: 14, rightEnd: 26 }
     ], 150);
 
-    // First Class: D (24 seats -> left 12, right 12), E to O (22 seats -> left 11, right 11) - Price 100
+    // First Class: D to R (26 seats -> left 13, right 13) - Price 100
     let firstClassRows = [];
-    firstClassRows.push({ row: "D", totalSeats: 24, leftEnd: 12, rightStart: 13, rightEnd: 24 });
-    ["E","F","G","H","I","J","K","L","M","N","O"].forEach(r => {
-        firstClassRows.push({ row: r, totalSeats: 22, leftEnd: 11, rightStart: 12, rightEnd: 22 });
+    ["D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"].forEach(r => {
+        firstClassRows.push({ row: r, leftEnd: 13, rightStart: 14, rightEnd: 26 });
     });
     createCustomSection("firstClass", firstClassRows, 100);
 
-    // Second Class: P to W (22 seats -> left 11, right 11) - Price 70
+    // Second Class: S to W (26 seats -> left 13, right 13) - Price 70
     let secondClassRows = [];
-    ["P","Q","R","S","T","U","V","W"].forEach(r => {
-        secondClassRows.push({ row: r, totalSeats: 22, leftEnd: 11, rightStart: 12, rightEnd: 22 });
+    ["S","T","U","V","W"].forEach(r => {
+        secondClassRows.push({ row: r, leftEnd: 13, rightStart: 14, rightEnd: 26 });
     });
     createCustomSection("secondClass", secondClassRows, 70);
 }
