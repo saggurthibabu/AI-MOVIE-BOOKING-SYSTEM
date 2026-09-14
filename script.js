@@ -361,7 +361,7 @@ function bookTicket(){
     if (typeof posters !== 'undefined' && posters[movie]) {
         document.getElementById("ticketPoster").src = posters[movie];
     } else {
-        document.getElementById("ticketPoster.src = "movie.jpg";
+        document.getElementById("ticketPoster").src = "movie.jpg";
     }
 
     document.getElementById("ticketTheatreName").innerText = theatre.toUpperCase();
