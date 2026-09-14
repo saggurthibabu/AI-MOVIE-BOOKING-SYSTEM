@@ -343,7 +343,6 @@ function bookTicket(){
     const time = document.getElementById("time").value;
     const city = document.getElementById("city").value;
 
-    // డేట్ ని "Tuesday 22 Sep" లాంటి ఫార్మాట్‌లోకి మార్చడం
     let formattedDateString = dateInput;
     if (dateInput) {
         const dateObj = new Date(dateInput);
@@ -353,23 +352,29 @@ function bookTicket(){
         formattedDateString = `${weekday} ${day} ${month}`;
     }
 
-    // డిఫరెంట్ బుకింగ్ ఐడీ జనరేట్ చేయడం
     const randomId = "4106" + Math.floor(1000 + Math.random() * 9000) + "/" + Math.floor(100000000000 + Math.random() * 900000000000);
 
-    // టికెట్‌లో వివరాలు ఫిల్ చేయడం
+    // Populate data
     document.getElementById("ticketMovie").innerText = movie;
     document.getElementById("ticketDateTime").innerText = `${formattedDateString} | ${time}`;
-    document.getElementById("ticketPoster").src = posters[movie] || "movie.jpg";
+    
+    if (typeof posters !== 'undefined' && posters[movie]) {
+        document.getElementById("ticketPoster").src = posters[movie];
+    } else {
+        document.getElementById("ticketPoster.src = "movie.jpg";
+    }
+
     document.getElementById("ticketTheatreName").innerText = theatre.toUpperCase();
-    document.getElementById("ticketSeatsInfo").innerText = "Seats: " + selectedSeats.join(", ");
+    
+    const seatClass = typeof selectedClass !== 'undefined' ? selectedClass : "First Class";
+    const seatsText = typeof selectedSeats !== 'undefined' ? selectedSeats.join(", ") : "";
+    document.getElementById("ticketSeatsInfo").innerText = `${seatClass}-${seatsText}`;
+    
     document.getElementById("ticketTheatreFull").innerText = `${theatre}, ${city}`;
     document.getElementById("bookingId").innerText = "Booking ID: " + randomId;
 
-    // ప్రతి బుకింగ్‌కు యూనిక్‌గా QR కోడ్ జనరేట్ అవ్వడానికి:
-    const qrData = `Movie:${movie}|Theatre:${theatre}|Seats:${selectedSeats.join(",")}|ID:${randomId}`;
-    if (document.getElementById("ticketQR")) {
-        document.getElementById("ticketQR").src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrData)}`;
-    }
+    const qrData = `Movie:${movie}|Theatre:${theatre}|Seats:${seatsText}|ID:${randomId}`;
+    document.getElementById("ticketQR").src = `https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=${encodeURIComponent(qrData)}`;
 
     document.querySelectorAll('.step-section').forEach(section => {
         section.classList.remove('active');
