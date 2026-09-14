@@ -106,12 +106,11 @@ function showRecommendation(){
 }
 
 function createSeats(){
-    createSection("balcony", ["A","B","C"], 150);
-    createSection("firstClass", ["D","E","F","G","H","I","J","K","L"], 100);
-    createSection("secondClass", ["M","N","O"], 70);
+    createSection("firstClass", ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"], 100, 1, 11, 12, 22);
+    createSection("secondClass", ["P","Q","R","S","T"], 73, 1, 11, 12, 22);
 }
 
-function createSection(sectionId, rows, price){
+function createSection(sectionId, rows, price, leftStart, leftEnd, rightStart, rightEnd){
     const section = document.getElementById(sectionId);
     section.innerHTML = "";
 
@@ -126,8 +125,8 @@ function createSection(sectionId, rows, price){
 
         const left = document.createElement("div");
         left.className = "left";
-        for(let i=1;i<=6;i++){
-            left.appendChild(createSeat(row+i, i, price));
+        for(let i = leftStart; i <= leftEnd; i++){
+            left.appendChild(createSeat(row + i, i, price));
         }
 
         const walkway = document.createElement("div");
@@ -135,8 +134,8 @@ function createSection(sectionId, rows, price){
 
         const right = document.createElement("div");
         right.className = "right";
-        for(let i=7;i<=12;i++){
-            right.appendChild(createSeat(row+i, i, price));
+        for(let i = rightStart; i <= rightEnd; i++){
+            right.appendChild(createSeat(row + i, i, price));
         }
 
         rowDiv.appendChild(left);
@@ -154,7 +153,7 @@ function createSeat(code, number, price){
     seat.dataset.seat = code;
     seat.dataset.price = price;
 
-    if(Math.random() < 0.15){
+    if(Math.random() < 0.12){
         seat.classList.add("booked");
     }
 
@@ -194,7 +193,7 @@ function updateAISuggestion(){
     if(selectedSeats.length === 0){
         msg = "Select seats to get AI recommendation.";
     }else if(selectedSeats.length === 1){
-        msg = "🤖 AI: H5, H6, G5 & G6 are the best viewing seats.";
+        msg = "🤖 AI: G5, G6, H5 & H6 are the best viewing seats.";
     }else if(selectedSeats.length === 2){
         msg = "❤️ AI: Couple seats selected.";
     }else if(selectedSeats.length >= 5){
