@@ -14,6 +14,67 @@ const posters = {
   "Varanasi": "varanasi.jpg"
 };
 
+const cityTheatresMap = {
+  "Hyderabad": [
+    "AMB Cinemas",
+    "AAA Cinemas",
+    "Aparna Cinemas",
+    "Prasads Multiplex",
+    "PVR Cinemas",
+    "INOX"
+  ],
+  "Vijayawada": [
+    "LEPL ICON",
+    "Capital Cinemas",
+    "INOX Laila Mall",
+    "Cinepolis PVP Sequence Mall",
+    "Cinepolis Powder One Mall"
+  ],
+  "Tiruvuru": [
+    "Sri Krishna Theatre",
+    "Sri Venkateswara Theatre",
+    "New Palace Theatre"
+  ],
+  "Mylavaram": [
+    "Narayana Theatre",
+    "Sanghamitra Theatre"
+  ],
+  "Kondapalli": [
+    "Siva Krishna Cinemas"
+  ],
+  "Vissannapeta": [
+    "Venkateswara Theatre",
+    "Sri Ram Theatre"
+  ],
+  "Nuzvid": [
+    "Dwaraka Theatre",
+    "Sathynarayana Theatre"
+  ],
+  "Guntur": [
+    "Cine Prime Theatre",
+    "Mythri Cinemas",
+    "JLE Cinemas",
+    "GS Cinemas"
+  ]
+};
+
+function changeCity() {
+    const citySelect = document.getElementById("city");
+    const theatreSelect = document.getElementById("theatre");
+    const selectedCity = citySelect.value;
+
+    theatreSelect.innerHTML = '<option value="">-- Select Theatre --</option>';
+
+    if (selectedCity && cityTheatresMap[selectedCity]) {
+        cityTheatresMap[selectedCity].forEach(function(theatre) {
+            const option = document.createElement("option");
+            option.value = theatre;
+            option.textContent = theatre;
+            theatreSelect.appendChild(option);
+        });
+    }
+}
+
 let selectedSeats = [];
 
 // ===========================
