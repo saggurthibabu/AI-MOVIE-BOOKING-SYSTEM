@@ -116,9 +116,17 @@
     </div>
 
     <div class="screen-box">
-        <div class="screen"></div>
-        <p>SCREEN THIS WAY</p>
-    </div>
+    <svg class="curved-screen" viewBox="0 0 500 60" preserveAspectRatio="none">
+        <path d="M 10,45 Q 250,5 490,45 L 475,55 Q 250,18 25,55 Z" fill="url(#screenGrad)"/>
+        <defs>
+            <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#c4b5fd" />
+                <stop offset="100%" stop-color="#6d28d9" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <p>SCREEN THIS WAY</p>
+</div>
 
     <h3 class="ai-title">🤖 AI Recommended Seats</h3>
     <p id="bestSeat" class="recommendation">Select seats to get AI recommendation.</p>
