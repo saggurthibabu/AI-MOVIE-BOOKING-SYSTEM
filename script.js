@@ -105,7 +105,7 @@ function showRecommendation(){
     else if(movie=="Kalki 2898 AD") text="🤖 AI Recommendation : Varanasi";
     else if(movie=="OG") text="🤖 AI Recommendation : Salaar";
     else if(movie=="Spirit") text="🤖 AI Recommendation : OG";
-    else if(movie=="Fauji") text="🤖 AI Recommendation : Spirit";
+    else if(movie=="Fauzi") text="🤖 AI Recommendation : Spirit";
     else if(movie=="Varanasi") text="🤖 AI Recommendation : Kalki 2898 AD";
 
     document.getElementById("recommendation").innerHTML=text;
