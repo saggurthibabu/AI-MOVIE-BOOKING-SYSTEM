@@ -313,38 +313,109 @@ margin-top:15px;
    Ticket
 ========================== */  
 
-#ticket{
-    margin-top: 25px;
-    padding: 20px;
-    border: 3px dashed #ff4757;
-    border-radius: 12px;
-    background: #1f1f26;
+.ticket-card {
+    max-width: 380px;
+    margin: 20px auto;
+    background: #0f0f14;
+    border-radius: 20px;
+    padding: 24px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 1px solid #2d2d3a;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+    color: #fff;
 }
 
-#ticket img{
-    width: 160px;
-    border-radius: 10px;
-    margin-bottom: 12px;
+.ticket-header {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-transform: lowercase; 
+    font-family: sans-serif;
 }
 
-#ticket p{
-    font-size: 16px;
+.ticket-header span {
+    display: block;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: #c084fc;
+}
+
+.ticket-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.ticket-poster {
+    width: 85px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ticket-info h2 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.meta-info, .scan-text {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.qr-container {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.theatre-name {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    margin-top: 8px;
+}
+
+.seats-info {
+    color: #a78bfa;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.ticket-dash {
+    border: none;
+    border-top: 2px dashed #2d2d3a;
+    margin: 15px 0;
+}
+
+.booking-id {
+    font-size: 0.8rem;
+    color: #94a3b8;
     margin: 6px 0;
 }
 
-#bookingId{
-    color: #38b000;
-    font-size: 20px;
+.hashtag {
+    font-size: 0.75rem;
+    color: #7c3aed;
     font-weight: bold;
-}
-
-#result{
-    color: #4cc9f0;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 
 /* ==========================
