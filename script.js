@@ -342,7 +342,8 @@ function bookTicket(){
     const dateInput = document.getElementById("date").value;
     const time = document.getElementById("time").value;
     const city = document.getElementById("city").value;
-
+    const selectedSeats = window.selectedSeats || [];
+  
     let formattedDateString = dateInput;
     if (dateInput) {
         const dateObj = new Date(dateInput);
