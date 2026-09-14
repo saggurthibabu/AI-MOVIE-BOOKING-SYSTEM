@@ -183,20 +183,38 @@
      STEP 5: Ticket Display
 ========================== -->
 <div class="step-section" id="step5">
-    <div id="ticket">
-        <h2>🎬 Movie Ticket</h2>
-        <img id="ticketPoster" width="180">
-        <p id="ticketMovie"></p>
-        <p id="ticketTheatre"></p>
-        <p id="ticketDate"></p>
-        <p id="ticketTime"></p>
-        <p id="ticketSeats"></p>
-        <p id="ticketAmount"></p>
-        <p id="ticketPayment"></p>
-        <h3 id="bookingId"></h3>
-        <h2 id="result"></h2>
+    <div id="ticket" class="ticket-card">
+        <div class="ticket-header">AI Movie Booking System</div>
+        
+        <div class="ticket-body">
+            <img id="ticketPoster" class="ticket-poster" src="movie.jpg">
+            <div class="ticket-info">
+                <h2 id="ticketMovie">Movie Name</h2>
+                <p class="meta-info">UA16+ | Telugu | 2D</p>
+                <p id="ticketDateTime">Saturday 22 Aug | 9:30 PM</p>
+                <p class="scan-text">Scan this QR code at theatre</p>
+            </div>
+        </div>
+
+        <div class="qr-container">
+            <img src="qr.jpg" alt="QR Code" width="140" height="140">
+        </div>
+
+        <div class="ticket-footer-details">
+            <p id="ticketTheatreName" class="theatre-name">THEATRE NAME</p>
+            <p id="ticketSeatsInfo" class="seats-info">First Class-A1,A2</p>
+        </div>
+
+        <hr class="ticket-dash">
+
+        <div class="ticket-bottom">
+            <p id="ticketTheatreFull">Narayana Theatre, Mylavaram</p>
+            <p id="bookingId" class="booking-id">Booking ID: 41063602/10000072843462</p>
+            <p class="hashtag">#JoinTheHype</p>
+        </div>
+
         <br>
-        <button onclick="window.print()">🖨 Print Ticket</button>
+        <button onclick="window.print()" class="print-btn">🖨 Print Ticket</button>
     </div>
 </div>
 
