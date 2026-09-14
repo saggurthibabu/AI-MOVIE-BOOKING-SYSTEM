@@ -364,10 +364,10 @@ function bookTicket(){
         document.getElementById("ticketPoster").src = "movie.jpg";
     }
 
-    document.getElementById("ticketTheatreName").innerText = theatre.toUpperCase();
+    document.getElementById("ticketTheatreName").innerText = theatre? theatre.toUpperCase():'';
     
     const seatClass = typeof selectedClass !== 'undefined' ? selectedClass : "First Class";
-    const seatsText = typeof selectedSeats !== 'undefined' ? selectedSeats.join(", ") : "";
+    const seatsText = Array.isArray(selectedseats) ? selectedSeats.join(", ") : (selectionseats || "");
     document.getElementById("ticketSeatsInfo").innerText = `${seatClass}-${seatsText}`;
     
     document.getElementById("ticketTheatreFull").innerText = `${theatre}, ${city}`;
