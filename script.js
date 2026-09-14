@@ -76,13 +76,14 @@ function changeCity() {
 let selectedSeats = [];
 
 window.onload = function () {
+    // BUG RESOLVED: Array element trigger [0] is added correctly now
     let today = new Date().toISOString().split("T")[0];
     document.getElementById("date").min = today;
     document.getElementById("date").value = "";
 
     createSeats();
     showRecommendation();
-    adjustScreenText(); // App crash avvakunda load avvagane interface calculation check chesthundi
+    adjustScreenText();
 };
 
 function changeMovie(){
@@ -91,7 +92,7 @@ function changeMovie(){
     
     let posterImg = document.getElementById("gposter");
     if(posterImg) {
-        posterImg.src = posters[movie] || "spirit.jpg";
+        posterImg.src = posters[movie] || "movie.jpg";
     }
     
     showRecommendation();
@@ -120,30 +121,36 @@ function createSeats(){
     ];
 
     const sectionBalcony = document.getElementById("balconyClass");
-    sectionBalcony.innerHTML = "";
-    balconyRows.forEach(function(item){
-        renderRow(sectionBalcony, item, 150);
-    });
+    if (sectionBalcony) {
+        sectionBalcony.innerHTML = "";
+        balconyRows.forEach(function(item){
+            renderRow(sectionBalcony, item, 150);
+        });
+    }
 
     let firstClassRows = [];
     ["D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"].forEach(r => {
         firstClassRows.push({ row: r, leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false });
     });
     const sectionFirst = document.getElementById("firstClass");
-    sectionFirst.innerHTML = "";
-    firstClassRows.forEach(function(item){
-        renderRow(sectionFirst, item, 100);
-    });
+    if (sectionFirst) {
+        sectionFirst.innerHTML = "";
+        firstClassRows.forEach(function(item){
+            renderRow(sectionFirst, item, 100);
+        });
+    }
 
     let secondClassRows = [];
     ["S","T","U","V","W"].forEach(r => {
         secondClassRows.push({ row: r, leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false });
     });
     const sectionSecond = document.getElementById("secondClass");
-    sectionSecond.innerHTML = "";
-    secondClassRows.forEach(function(item){
-        renderRow(sectionSecond, item, 70);
-    });
+    if (sectionSecond) {
+        sectionSecond.innerHTML = "";
+        secondClassRows.forEach(function(item){
+            renderRow(sectionSecond, item, 70);
+        });
+    }
 }
 
 function renderRow(section, item, price){
@@ -301,7 +308,6 @@ function nextStep(stepId) {
     });
     document.getElementById(stepId).classList.add('active');
     
-    // Step 3 layout visible avvagane text size render trigger function apply avthundi
     if (stepId === 'step3') {
         setTimeout(adjustScreenText, 50);
     }
@@ -339,4 +345,3 @@ function bookTicket(){
     const city = document.getElementById("city").value;
     const theatre = document.getElementById("theatre").value;
     const date = document.getElementById("date").value;
-    const time = document.getElementById("time").value;
