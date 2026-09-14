@@ -218,27 +218,27 @@ background:#2b2b36;
 /* Screen (Curved BMS Style) */
 
 .screen-box{
-margin-top:20px;
-margin-bottom:10px;
-text-align:center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .screen{
-width:75%;
-height:20px;
-margin:auto;
-background:linear-gradient(to bottom, #7b2cbf, #3c096c);
-border-top-left-radius: 60% 100%;
-border-top-right-radius: 60% 100%;
-box-shadow: 0 8px 20px rgba(123, 44, 191, 0.7);
+    width: 80%;
+    height: 35px;
+    margin: 20px auto;
+    background: linear-gradient(to bottom, #c4b5fd, #6d28d9);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: perspective(400px) rotateX(12deg);
+    box-shadow: 0 12px 25px rgba(109, 40, 217, 0.7);
 }
 
 .screen-box p{
-margin-top:8px;
-font-size:12px;
-font-weight:bold;
-letter-spacing:3px;
-color:#e0aaff;
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #e0aaff;
 }
 
 /* ==========================
