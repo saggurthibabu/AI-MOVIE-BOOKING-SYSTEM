@@ -342,8 +342,7 @@ function bookTicket(){
     const dateInput = document.getElementById("date").value;
     const time = document.getElementById("time").value;
     const city = document.getElementById("city").value;
-    const selectedSeats = window.selectedSeats || [];
-  
+
     let formattedDateString = dateInput;
     if (dateInput) {
         const dateObj = new Date(dateInput);
@@ -365,11 +364,17 @@ function bookTicket(){
         document.getElementById("ticketPoster").src = "movie.jpg";
     }
 
-    document.getElementById("ticketTheatreName").innerText = theatre? theatre.toUpperCase():'';
+    document.getElementById("ticketTheatreName").innerText = theatre ? theatre.toUpperCase() : '';
     
-    const seatClass = typeof selectedClass !== 'undefined' ? selectedClass : "First Class";
-    const seatsText = Array.isArray(selectedseats) ? selectedSeats.join(", ") : (selectionseats || "");
-    document.getElementById("ticketSeatsInfo").innerText = `${seatClass}-${seatsText}`;
+    let seatClass = "First Class";
+    if (selectedSeats.some(s => s.startsWith("A") || s.startsWith("B") || s.startsWith("C"))) {
+        seatClass = "Balcony";
+    } else if (selectedSeats.some(s => s.startsWith("S") || s.startsWith("T") || s.startsWith("U") || s.startsWith("V") || s.startsWith("W"))) {
+        seatClass = "Second Class";
+    }
+
+    const seatsText = Array.isArray(selectedSeats) ? selectedSeats.join(", ") : "";
+    document.getElementById("ticketSeatsInfo").innerText = `${seatClass} - ${seatsText}`;
     
     document.getElementById("ticketTheatreFull").innerText = `${theatre}, ${city}`;
     document.getElementById("bookingId").innerText = "Booking ID: " + randomId;
