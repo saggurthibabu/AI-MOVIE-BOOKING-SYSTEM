@@ -311,7 +311,7 @@ margin-top:15px;
 
 /* ==========================
    Ticket
-========================== */
+========================== */  
 
 #ticket{
     margin-top: 25px;
@@ -324,27 +324,27 @@ margin-top:15px;
 }
 
 #ticket img{
-width:160px;
-border-radius:10px;
-margin-bottom:12px;
+    width: 160px;
+    border-radius: 10px;
+    margin-bottom: 12px;
 }
 
 #ticket p{
-font-size:16px;
-margin:6px 0;
+    font-size: 16px;
+    margin: 6px 0;
 }
 
 #bookingId{
-color:#38b000;
-font-size:20px;
-font-weight:bold;
+    color: #38b000;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #result{
-color:#4cc9f0;
-font-size:20px;
-font-weight:bold;
-margin-top:12px;
+    color: #4cc9f0;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 12px;
 }
 
 /* ==========================
