@@ -112,7 +112,6 @@ function showRecommendation(){
 }
 
 function createSeats(){
-    // Balcony: A (28 seats -> left 13, middle 2, right 13), B-C (26 seats -> left 13, right 13) - Price 150
     const balconyRows = [
         { row: "A", leftEnd: 13, rightStart: 16, rightEnd: 28, extraMiddle: true },
         { row: "B", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false },
@@ -125,7 +124,6 @@ function createSeats(){
         renderRow(sectionBalcony, item, 150);
     });
 
-    // First Class: D to R (26 seats -> left 13, right 13) - Price 100
     let firstClassRows = [];
     ["D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R"].forEach(r => {
         firstClassRows.push({ row: r, leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false });
@@ -136,7 +134,6 @@ function createSeats(){
         renderRow(sectionFirst, item, 100);
     });
 
-    // Second Class: S to W (26 seats -> left 13, right 13) - Price 70
     let secondClassRows = [];
     ["S","T","U","V","W"].forEach(r => {
         secondClassRows.push({ row: r, leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false });
@@ -168,8 +165,8 @@ function renderRow(section, item, price){
     walkway.className = "walkway";
 
     if(item.extraMiddle){
-        walkway.appendChild(createSeat(item.row + "14", 14, price));
-        walkway.appendChild(createSeat(item.row + "15", 15, price));
+        // ఇక్కడ బటన్స్ సృష్టించకుండా కేవలం ఖాళీ గ్యాప్ మాత్రమే ఉండాలి (2 సీట్ల వెడల్పు గ్యాప్)
+        walkway.style.width = "48px"; // 2 సీట్ల సైజుకి సరిపడా గ్యాప్
     }
 
     const right = document.createElement("div");
@@ -184,6 +181,7 @@ function renderRow(section, item, price){
     rowDiv.appendChild(right);
 
     section.appendChild(rowDiv);
+}
 }
 
 function createSeat(code, number, price){
