@@ -82,6 +82,7 @@ window.onload = function () {
 
     createSeats();
     showRecommendation();
+    adjustScreenText(); // App crash avvakunda load avvagane interface calculation check chesthundi
 };
 
 function changeMovie(){
@@ -299,6 +300,12 @@ function nextStep(stepId) {
         section.classList.remove('active');
     });
     document.getElementById(stepId).classList.add('active');
+    
+    // Step 3 layout visible avvagane text size render trigger function apply avthundi
+    if (stepId === 'step3') {
+        setTimeout(adjustScreenText, 50);
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -307,6 +314,11 @@ function prevStep(stepId) {
         section.classList.remove('active');
     });
     document.getElementById(stepId).classList.add('active');
+    
+    if (stepId === 'step3') {
+        setTimeout(adjustScreenText, 50);
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -328,25 +340,3 @@ function bookTicket(){
     const theatre = document.getElementById("theatre").value;
     const date = document.getElementById("date").value;
     const time = document.getElementById("time").value;
-
-    document.getElementById("ticketPoster").src = posters[movie] || "spirit.jpg";
-    document.getElementById("ticketMovie").innerHTML = "<b>Movie:</b> " + movie;
-    document.getElementById("ticketTheatre").innerHTML = "<b>Theatre:</b> " + theatre + " (" + city + ")";
-    document.getElementById("ticketDate").innerHTML = "<b>Date:</b> " + date;
-    document.getElementById("ticketTime").innerHTML = "<b>Show Time:</b> " + time;
-    document.getElementById("ticketSeats").innerHTML = "<b>Seats:</b> " + selectedSeats.join(", ");
-    document.getElementById("ticketAmount").innerHTML = document.getElementById("priceDisplay").innerHTML;
-    document.getElementById("ticketPayment").innerHTML = "<b>Payment:</b> " + payment;
-
-    const bookingId = "BK" + Math.floor(100000 + Math.random() * 900000);
-    document.getElementById("bookingId").innerHTML = "Booking ID : " + bookingId;
-    document.getElementById("result").innerHTML = "🎉 Booking Successful. Enjoy your movie!";
-
-    confetti({
-        particleCount: 150,
-        spread: 80,
-        origin: { y: 0.6 }
-    });
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
