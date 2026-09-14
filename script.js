@@ -61,7 +61,7 @@ function changeCity() {
     const theatreSelect = document.getElementById("theatre");
     const selectedCity = citySelect.value;
 
-    theatreSelect.innerHTML = '<option value="">-- Select Theatre --</option>';
+    theatreSelect.innerHTML = '<option value="" disabled selected>-- Select Theatre --</option>';
 
     if (selectedCity && cityTheatresMap[selectedCity]) {
         cityTheatresMap[selectedCity].forEach(function(theatre) {
@@ -76,7 +76,6 @@ function changeCity() {
 let selectedSeats = [];
 
 window.onload = function () {
-    // FIXED: [0] slice array element constraint correctly attached now
     let today = new Date().toISOString().split("T")[0];
     const dateInput = document.getElementById("date");
     if(dateInput) {
@@ -86,7 +85,6 @@ window.onload = function () {
 
     createSeats();
     showRecommendation();
-    adjustScreenText();
 };
 
 function changeMovie(){
@@ -320,11 +318,6 @@ function nextStep(stepId) {
         section.classList.remove('active');
     });
     document.getElementById(stepId).classList.add('active');
-    
-    if (stepId === 'step3') {
-        setTimeout(adjustScreenText, 50);
-    }
-    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -333,11 +326,6 @@ function prevStep(stepId) {
         section.classList.remove('active');
     });
     document.getElementById(stepId).classList.add('active');
-    
-    if (stepId === 'step3') {
-        setTimeout(adjustScreenText, 50);
-    }
-    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -349,6 +337,22 @@ function bookTicket(){
         return;
     }
 
+    // Populate Ticket Details
+    document.getElementById("ticketMovie").innerText = "Movie: " + document.getElementById("movie").value;
+    document.getElementById("ticketTheatre").innerText = "Theatre: " + document.getElementById("theatre").value;
+    document.getElementById("ticketDate").innerText = "Date: " + document.getElementById("date").value;
+    document.getElementById("ticketTime").innerText = "Time: " + document.getElementById("time").value;
+    document.getElementById("ticketSeats").innerText = "Seats: " + selectedSeats.join(", ");
+    document.getElementById("ticketPayment").innerText = "Payment: " + payment;
+    document.getElementById("bookingId").innerText = "Booking ID: #" + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById("result").innerText = "Status: Confirmed";
+    
+    let movie = document.getElementById("movie").value;
+    document.getElementById("ticketPoster").src = posters[movie] || "movie.jpg";
+
     document.querySelectorAll('.step-section').forEach(section => {
         section.classList.remove('active');
     });
+    document.getElementById('step5').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
