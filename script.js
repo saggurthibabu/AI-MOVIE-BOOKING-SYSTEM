@@ -113,7 +113,7 @@ function showRecommendation(){
 
 function createSeats(){
     const balconyRows = [
-        { row: "A", leftEnd: 13, rightStart: 16, rightEnd: 28, extraMiddle: true },
+        { row: "A", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: true },
         { row: "B", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false },
         { row: "C", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false }
     ];
@@ -165,8 +165,7 @@ function renderRow(section, item, price){
     walkway.className = "walkway";
 
     if(item.extraMiddle){
-        // ఇక్కడ బటన్స్ సృష్టించకుండా కేవలం ఖాళీ గ్యాప్ మాత్రమే ఉండాలి (2 సీట్ల వెడల్పు గ్యాప్)
-        walkway.style.width = "48px"; // 2 సీట్ల సైజుకి సరిపడా గ్యాప్
+        walkway.innerHTML = '<div style="width:48px; height:22px;"></div>';
     }
 
     const right = document.createElement("div");
@@ -181,7 +180,6 @@ function renderRow(section, item, price){
     rowDiv.appendChild(right);
 
     section.appendChild(rowDiv);
-}
 }
 
 function createSeat(code, number, price){
