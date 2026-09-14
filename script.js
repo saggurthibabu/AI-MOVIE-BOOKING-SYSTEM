@@ -106,7 +106,7 @@ function showRecommendation(){
 }
 
 function createSeats(){
-    // Balcony: A (28 seats -> left 13, right 13 + 2 in middle), B-C (26 seats -> left 13, right 13) - Price 150
+    // Balcony: A (28 seats -> left 13, right 13+2 in middle), B-C (26 seats -> left 13, right 13) - Price 150
     const balconyRows = [
         { row: "A", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: true },
         { row: "B", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false },
@@ -165,10 +165,9 @@ function renderRow(section, item, price){
     walkway.style.justifyContent = "center";
     walkway.style.alignItems = "center";
 
-    // Row A కి మధ్యలో ఆ 2 అదనపు సీట్లను (27, 28 లేదా 14, 15 లాగా) ఇక్కడ పెడతాము
     if(item.extraMiddle){
-        walkway.appendChild(createSeat(item.row + "27", 27, price));
-        walkway.appendChild(createSeat(item.row + "28", 28, price));
+        walkway.appendChild(createSeat(item.row + "14", 14, price));
+        walkway.appendChild(createSeat(item.row + "15", 15, price));
     }
 
     const right = document.createElement("div");
@@ -183,7 +182,6 @@ function renderRow(section, item, price){
     rowDiv.appendChild(right);
 
     section.appendChild(rowDiv);
-}
 }
 
 function createSeat(code, number, price){
