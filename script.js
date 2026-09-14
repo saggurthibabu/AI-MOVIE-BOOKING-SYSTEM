@@ -85,8 +85,14 @@ window.onload = function () {
 };
 
 function changeMovie(){
-    let movie = document.getElementById("movie").value;
-    document.getElementById("gposter").src = posters[movie] || "spirit.jpg";
+    let movieElement = document.getElementById("movie");
+    let movie = movieElement.value;
+    
+    let posterImg = document.getElementById("gposter");
+    if(posterImg) {
+        posterImg.src = posters[movie] || "spirit.jpg";
+    }
+    
     showRecommendation();
 }
 
@@ -106,9 +112,9 @@ function showRecommendation(){
 }
 
 function createSeats(){
-    // Balcony: A (28 seats -> left 13, right 13+2 in middle), B-C (26 seats -> left 13, right 13) - Price 150
+    // Balcony: A (28 seats -> left 13, middle 2, right 13), B-C (26 seats -> left 13, right 13) - Price 150
     const balconyRows = [
-        { row: "A", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: true },
+        { row: "A", leftEnd: 13, rightStart: 16, rightEnd: 28, extraMiddle: true },
         { row: "B", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false },
         { row: "C", leftEnd: 13, rightStart: 14, rightEnd: 26, extraMiddle: false }
     ];
@@ -160,10 +166,6 @@ function renderRow(section, item, price){
 
     const walkway = document.createElement("div");
     walkway.className = "walkway";
-    walkway.style.display = "flex";
-    walkway.style.gap = "3px";
-    walkway.style.justifyContent = "center";
-    walkway.style.alignItems = "center";
 
     if(item.extraMiddle){
         walkway.appendChild(createSeat(item.row + "14", 14, price));
