@@ -76,10 +76,13 @@ function changeCity() {
 let selectedSeats = [];
 
 window.onload = function () {
-    // BUG RESOLVED: Array element trigger [0] is added correctly now
+    // FIXED: [0] slice array element constraint correctly attached now
     let today = new Date().toISOString().split("T")[0];
-    document.getElementById("date").min = today;
-    document.getElementById("date").value = "";
+    const dateInput = document.getElementById("date");
+    if(dateInput) {
+        dateInput.min = today;
+        dateInput.value = "";
+    }
 
     createSeats();
     showRecommendation();
@@ -110,7 +113,10 @@ function showRecommendation(){
     else if(movie=="Fauzi") text="🤖 AI Recommendation : Pushpa 2";
     else if(movie=="Varanasi") text="🤖 AI Recommendation : Kalki 2898 AD";
 
-    document.getElementById("recommendation").innerHTML=text;
+    const recElement = document.getElementById("recommendation");
+    if(recElement) {
+        recElement.innerHTML = text;
+    }
 }
 
 function createSeats(){
@@ -224,9 +230,10 @@ function toggleSeat(btn){
         selectedSeats.push(seatCode);
     }
 
-    document.getElementById("selectedSeats").innerHTML =
-        "🎟 Selected Seats : " +
-        (selectedSeats.length ? selectedSeats.join(", ") : "None");
+    const selSeatsElem = document.getElementById("selectedSeats");
+    if(selSeatsElem) {
+        selSeatsElem.innerHTML = "🎟 Selected Seats : " + (selectedSeats.length ? selectedSeats.join(", ") : "None");
+    }
 
     updateAISuggestion();
     calculateTotal();
@@ -245,7 +252,10 @@ function updateAISuggestion(){
     }else{
         msg = "✅ AI: Great seat selection.";
     }
-    document.getElementById("bestSeat").innerHTML = msg;
+    const bestSeatElem = document.getElementById("bestSeat");
+    if(bestSeatElem) {
+        bestSeatElem.innerHTML = msg;
+    }
 }
 
 function calculateTotal(){
@@ -253,7 +263,10 @@ function calculateTotal(){
     document.querySelectorAll(".seat.selected").forEach(function(seat){
         total += Number(seat.dataset.price);
     });
-    document.getElementById("priceDisplay").innerHTML = "💰 Total Price : ₹" + total;
+    const priceDisp = document.getElementById("priceDisplay");
+    if(priceDisp) {
+        priceDisp.innerHTML = "💰 Total Price : ₹" + total;
+    }
 }
 
 function paymentChange(){
@@ -339,9 +352,3 @@ function bookTicket(){
     document.querySelectorAll('.step-section').forEach(section => {
         section.classList.remove('active');
     });
-    document.getElementById("step5").classList.add('active');
-
-    const movie = document.getElementById("movie").value;
-    const city = document.getElementById("city").value;
-    const theatre = document.getElementById("theatre").value;
-    const date = document.getElementById("date").value;
