@@ -223,14 +223,12 @@ background:#2b2b36;
     text-align: center;
 }
 
-.screen{
-    width: 80%;
-    height: 35px;
-    margin: 20px auto;
-    background: linear-gradient(to bottom, #c4b5fd, #6d28d9);
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    transform: perspective(400px) rotateX(12deg);
-    box-shadow: 0 12px 25px rgba(109, 40, 217, 0.7);
+.curved-screen {
+    width: 85%;
+    height: 45px;
+    margin: 10px auto;
+    display: block;
+    filter: drop-shadow(0 10px 18px rgba(109, 40, 217, 0.8));
 }
 
 .screen-box p{
