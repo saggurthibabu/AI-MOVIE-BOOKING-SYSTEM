@@ -2,14 +2,10 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AI Movie Ticket Booking System</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -18,287 +14,183 @@
 
 <h1>🎬 AI Movie Ticket Booking System</h1>
 
-<!-- Movie Selection -->
-
-<label>Select Movie</label>
-<select id="movie" onchange="changeMovie()">
-     <option value="">-- Select Movie --</option>
-     <option value="Salaar">Salaar</option>
-     <option value="Pushpa 2">Pushpa 2</option>
-     <option value="Kalki 2898 AD">Kalki 2898 AD</option>
-     <option value="OG">OG</option>
-     <option value="Spirit">Spirit</option>
-     <option value="Fauji">Fauji</option>
-     <option value="Varanasi">Varanasi</option>
-</select>
-
-<br><br>
-
-<img id="gposter"
-src="movie.jpg"
-class="poster">
-
-<br>
-
-<h2 class="ai-title">🤖 AI Recommended Movie</h2>
-
-<p id="recommendation" class="recommendation">
-Please select a movie.
-</p>
-
-<hr>
-
-<label>Select City</label>
-
-<select id="city" onchange="changeCity()">
-     
-    <option value="" disabled selected>-- Select City --</option>
-     
-    <option value="Hyderabad">Hyderabad</option>
-     
-    <option value="Vijayawada">Vijayawada</option>
-     
-    <option value="Tiruvuru">Tiruvuru</option>
-     
-    <option value="Mylavaram">Mylavaram</option>
-     
-    <option value="Kondapalli">Kondapalli</option>
-     
-    <option value="Vissannapeta">Vissannapeta</option>
-     
-    <option value="Nuzvid">Nuzvid</option>
-     
-    <option value="Guntur">Guntur</option>
-
-</select>
-
-<br><br>
-
-<label>Select Theatre</label>
-
-<select id="theatre">
-     
-    <option value="" disabled selected>-- Select Theatre --</option>
-
-</select>
-
-<br><br>
-
-<label>Select Date</label>
-
-<input type="date" id="date">
-
-<br><br>
-
-<label>Select Show Time</label>
-
-<select id="time">
-
-<option value="" disabled selected>-- Select Show Time --</option>
-
-<option value="09:00 AM">09:00 AM</option>
-
-<option value="12:00 PM">12:00 PM</option>
-
-<option value="03:00 PM">03:00 PM</option>
-
-<option value="06;00 PM">06:00 PM</option>
-
-<option value="09:00 PM">09:00 PM</option>
-
-</select>
-
-<hr>
 <!-- ==========================
-     THEATRE SEATING
+     STEP 1: Movie Selection
 ========================== -->
+<div class="step-section active" id="step1">
+    <label>Select Movie</label>
+    <select id="movie" onchange="changeMovie()">
+         <option value="">-- Select Movie --</option>
+         <option value="Salaar">Salaar</option>
+         <option value="Pushpa 2">Pushpa 2</option>
+         <option value="Kalki 2898 AD">Kalki 2898 AD</option>
+         <option value="OG">OG</option>
+         <option value="Spirit">Spirit</option>
+         <option value="Fauji">Fauji</option>
+         <option value="Varanasi">Varanasi</option>
+    </select>
 
-<h2 align="center">🎭 BALCONY (₹150)</h2>
+    <br><br>
 
-<div id="balcony" class="seat-section">
-<!-- JavaScript generates seats -->
+    <img id="gposter" src="movie.jpg" class="poster">
+
+    <br>
+
+    <h2 class="ai-title">🤖 AI Recommended Movie</h2>
+
+    <p id="recommendation" class="recommendation">
+    Please select a movie.
+    </p>
+
+    <br>
+    <button type="button" onclick="nextStep('step2')">Next ➡</button>
 </div>
 
-<h2 align="center">🥇 FIRST CLASS (₹100)</h2>
-
-<div id="firstClass" class="seat-section">
-<!-- JavaScript generates seats -->
-</div>
-
-<h2 align="center">🥈 SECOND CLASS (₹70)</h2>
-
-<div id="secondClass" class="seat-section">
-<!-- JavaScript generates seats -->
-</div>
-
-<!-- Seat Status -->
-
-<div class="legend">
-
-<div>
-<span class="available"></span>
-Available
-</div>
-
-<div>
-<span class="selected"></span>
-Selected
-</div>
-
-<div>
-<span class="booked"></span>
-Booked
-</div>
-
-</div>
-
-<!-- AI Seat Suggestion -->
-
-<h3 class="ai-title">
-🤖 AI Recommended Seats
-</h3>
-
-<p id="bestSeat" class="recommendation">
-Select seats to get AI recommendation.
-</p>
-
-<!-- Selected Seats -->
-
-<h3 id="selectedSeats">
-🎟 Selected Seats : None
-</h3>
-
-<!-- Total Price -->
-
-<h2 id="priceDisplay">
-💰 Total Price : ₹0
-</h2>
-
-<!-- Screen -->
-
-<div class="screen-box">
-
-<div class="screen"></div>
-
-<p>SCREEN THIS WAY</p>
-
-</div>
-
-<hr>
-<!-- ==========================
-     PAYMENT
-========================== -->
-
-<h2>💳 Payment</h2>
-
-<label>Select Payment Method</label>
-
-<select id="payment" onchange="paymentChange()">
-
-<option value="">-- Select Payment --</option>
-
-<option value="UPI">UPI</option>
-
-<option value="Credit Card">Credit Card</option>
-
-<option value="Debit Card">Debit Card</option>
-
-</select>
-
-<br><br>
-
-<div id="qrBox" style="display:none;">
-
-<h3>Scan QR Code</h3>
-
-<img src="qr.jpg"
-width="220"
-height="220">
-
-<br><br>
-
-<button onclick="paymentSuccess()">
-Payment Completed
-</button>
-
-</div>
-
-<div id="cardBox" style="display:none;">
-
-<input
-type="text"
-placeholder="Card Number">
-
-<br><br>
-
-<input
-type="text"
-placeholder="Card Holder Name">
-
-<br><br>
-
-<input
-type="password"
-placeholder="CVV">
-
-<br><br>
-
-<button onclick="paymentSuccess()">
-Pay Now
-</button>
-
-</div>
-
-<hr>
-
-<!-- BOOK BUTTON -->
-
-<button
-class="book-btn"
-onclick="bookTicket()">
-
-🎟 Book Ticket
-
-</button>
 
 <!-- ==========================
-     TICKET
+     STEP 2: City, Theatre, Date & Time
 ========================== -->
+<div class="step-section" id="step2">
+    <label>Select City</label>
+    <select id="city" onchange="changeCity()">
+        <option value="" disabled selected>-- Select City --</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Vijayawada">Vijayawada</option>
+        <option value="Tiruvuru">Tiruvuru</option>
+        <option value="Mylavaram">Mylavaram</option>
+        <option value="Kondapalli">Kondapalli</option>
+        <option value="Vissannapeta">Vissannapeta</option>
+        <option value="Nuzvid">Nuzvid</option>
+        <option value="Guntur">Guntur</option>
+    </select>
 
-<div
-id="ticket"
-style="display:none;">
+    <br><br>
 
-<h2>🎬 Movie Ticket</h2>
+    <label>Select Theatre</label>
+    <select id="theatre">
+        <option value="" disabled selected>-- Select Theatre --</option>
+    </select>
 
-<img
-id="ticketPoster"
-width="180">
+    <br><br>
 
-<p id="ticketMovie"></p>
+    <label>Select Date</label>
+    <input type="date" id="date">
 
-<p id="ticketTheatre"></p>
+    <br><br>
 
-<p id="ticketDate"></p>
+    <label>Select Show Time</label>
+    <select id="time">
+        <option value="" disabled selected>-- Select Show Time --</option>
+        <option value="09:00 AM">09:00 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+        <option value="03:00 PM">03:00 PM</option>
+        <option value="06:00 PM">06:00 PM</option>
+        <option value="09:00 PM">09:00 PM</option>
+    </select>
 
-<p id="ticketTime"></p>
+    <br><br>
+    <div style="display: flex; justify-content: space-between;">
+        <button type="button" onclick="prevStep('step1')">⬅ Back</button>
+        <button type="button" onclick="nextStep('step3')">Next ➡</button>
+    </div>
+</div>
 
-<p id="ticketSeats"></p>
 
-<p id="ticketAmount"></p>
+<!-- ==========================
+     STEP 3: Theatre Seating
+========================== -->
+<div class="step-section" id="step3">
+    <h2 align="center">🎭 BALCONY (₹150)</h2>
+    <div id="balcony" class="seat-section"></div>
 
-<p id="ticketPayment"></p>
+    <h2 align="center">🥇 FIRST CLASS (₹100)</h2>
+    <div id="firstClass" class="seat-section"></div>
 
-<h3 id="bookingId"></h3>
+    <h2 align="center">🥈 SECOND CLASS (₹70)</h2>
+    <div id="secondClass" class="seat-section"></div>
 
-<h2 id="result"></h2>
+    <div class="legend">
+        <div><span class="available"></span>Available</div>
+        <div><span class="selected"></span>Selected</div>
+        <div><span class="booked"></span>Booked</div>
+    </div>
 
-<br>
+    <h3 class="ai-title">🤖 AI Recommended Seats</h3>
+    <p id="bestSeat" class="recommendation">Select seats to get AI recommendation.</p>
 
-<button onclick="window.print()">
-🖨 Print Ticket
-</button>
+    <h3 id="selectedSeats">🎟 Selected Seats : None</h3>
+    <h2 id="priceDisplay">💰 Total Price : ₹0</h2>
 
+    <div class="screen-box">
+        <div class="screen"></div>
+        <p>SCREEN THIS WAY</p>
+    </div>
+
+    <br>
+    <div style="display: flex; justify-content: space-between;">
+        <button type="button" onclick="prevStep('step2')">⬅ Back</button>
+        <button type="button" onclick="nextStep('step4')">Next ➡</button>
+    </div>
+</div>
+
+
+<!-- ==========================
+     STEP 4: Payment
+========================== -->
+<div class="step-section" id="step4">
+    <h2>💳 Payment</h2>
+
+    <label>Select Payment Method</label>
+    <select id="payment" onchange="paymentChange()">
+        <option value="">-- Select Payment --</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+    </select>
+
+    <br><br>
+
+    <div id="qrBox" style="display:none;">
+        <h3>Scan QR Code</h3>
+        <img src="qr.jpg" width="220" height="220">
+        <br><br>
+        <button onclick="paymentSuccess()">Payment Completed</button>
+    </div>
+
+    <div id="cardBox" style="display:none;">
+        <input type="text" placeholder="Card Number"><br><br>
+        <input type="text" placeholder="Card Holder Name"><br><br>
+        <input type="password" placeholder="CVV"><br><br>
+        <button onclick="paymentSuccess()">Pay Now</button>
+    </div>
+
+    <hr>
+    <button class="book-btn" onclick="bookTicket()">🎟 Book Ticket</button>
+
+    <br><br>
+    <button type="button" onclick="prevStep('step3')">⬅ Back</button>
+</div>
+
+
+<!-- ==========================
+     STEP 5: Ticket Display
+========================== -->
+<div class="step-section" id="step5">
+    <div id="ticket">
+        <h2>🎬 Movie Ticket</h2>
+        <img id="ticketPoster" width="180">
+        <p id="ticketMovie"></p>
+        <p id="ticketTheatre"></p>
+        <p id="ticketDate"></p>
+        <p id="ticketTime"></p>
+        <p id="ticketSeats"></p>
+        <p id="ticketAmount"></p>
+        <p id="ticketPayment"></p>
+        <h3 id="bookingId"></h3>
+        <h2 id="result"></h2>
+        <br>
+        <button onclick="window.print()">🖨 Print Ticket</button>
+    </div>
 </div>
 
 </div>
@@ -307,5 +199,4 @@ width="180">
 <script src="script.js"></script>
 
 </body>
-
 </html>
