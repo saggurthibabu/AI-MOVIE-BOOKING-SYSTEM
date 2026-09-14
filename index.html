@@ -182,36 +182,37 @@
 <!-- ==========================
      STEP 5: Ticket Display
 ========================== -->
-<div class="step-section" id="step5">
-    <div id="ticket" class="ticket-card">
-        <div class="ticket-header">AI Movie Booking System</div>
-        
-        <div class="ticket-body">
-            <img id="ticketPoster" class="ticket-poster" src="movie.jpg">
-            <div class="ticket-info">
-                <h2 id="ticketMovie">Movie Name</h2>
-                <p class="meta-info">UA16+ | Telugu | 2D</p>
-                <p id="ticketDateTime"></p>
-                <p class="scan-text">Scan this QR code at theatre</p>
-            </div>
-        </div>
+<div class="ticket-card">
+    <div class="ticket-header">
+        <span>district</span>
+        movies
+    </div>
 
-        <div class="qr-container">
-            <img id="ticketQR" src="" alt="QR Code" width="140" height="140">
+    <div class="ticket-body">
+        <img src="నీ_పోస్టర్_లింక్_ఇక్కడ" alt="Poster" class="ticket-poster">
+        <div class="ticket-info">
+            <h2>Irumudi</h2>
+            <div class="meta-info">UA16+ | Telugu | 2D</div>
+            <div class="meta-info">Saturday 22 Aug &nbsp;|&nbsp; 9:30 PM</div>
         </div>
+    </div>
 
-        <div class="ticket-footer-details">
-            <p id="ticketTheatreName" class="theatre-name"></p>
-            <p id="ticketSeatsInfo" class="seats-info"></p>
-        </div>
+    <div class="scan-text">Scan this QR code at theatre</div>
 
-        <hr class="ticket-dash">
+    <div class="qr-container">
+        <!-- నీ QR కోడ్ ఇమేజ్ లేదా SVG -->
+        <img src="నీ_QR_కోడ్_లింక్_ఇక్కడ" alt="QR Code" style="width: 130px; height: 130px; display: block;">
+    </div>
 
-        <div class="ticket-bottom">
-            <p id="ticketTheatreFull"></p>
-            <p id="bookingId" class="booking-id"></p>
-            <p class="hashtag">#JoinTheHype</p>
-        </div>
+    <div class="theatre-name">NARAYAN</div>
+    <div class="seats-info">First Class-A1,A2,A3,A4,A5</div>
+
+    <hr class="ticket-dash">
+
+    <div class="theatre-location">Narayana Theatre, Mylavaram</div>
+    <div class="booking-id">Booking ID: 41063602/10000072843462</div>
+    <div class="hashtag">#JoinTheHype</div>
+</div>
 
         <br>
         <button onclick="window.print()" class="print-btn">🖨 Print Ticket</button>
