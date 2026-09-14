@@ -16,7 +16,7 @@ padding:20px;
 }
 
 .container{
-max-width:1200px;
+max-width:1250px;
 margin:auto;
 background:#1a1a1a;
 padding:25px;
@@ -99,19 +99,20 @@ border-color: #333;
 .seat-section{
 margin-top:20px;
 margin-bottom:30px;
+overflow-x: auto;
 }
 
 .row{
 display:flex;
 justify-content:center;
 align-items:center;
-margin:10px 0;
+margin:8px 0;
 }
 
 .row-name{
-width:35px;
+width:30px;
 font-weight:bold;
-font-size:18px;
+font-size:16px;
 text-align:center;
 color: #aaa;
 }
@@ -119,23 +120,24 @@ color: #aaa;
 .left,
 .right{
 display:flex;
-gap:8px;
+gap:6px;
 }
 
 .walkway{
-width:80px;
+width:45px;
 }
 
 .seat{
-width:38px;
-height:38px;
+width:32px;
+height:32px;
 border:none;
-border-radius:8px;
+border-radius:6px;
 background:#2b2d42;
 color:white;
+font-size:11px;
 font-weight:bold;
 cursor:pointer;
-transition:.3s;
+transition:.2s;
 }
 
 .seat:hover{
@@ -143,8 +145,8 @@ transform:scale(1.1);
 }
 
 .seat.selected{
-background:#4cc9f0;
-color: #000;
+background:#7b2cbf;
+color: #ffffff;
 }
 
 .seat.booked{
@@ -185,7 +187,7 @@ background:#2b2d42;
 }
 
 .selected{
-background:#4cc9f0;
+background:#7b2cbf;
 }
 
 .booked{
@@ -200,7 +202,7 @@ text-align:center;
 }
 
 .screen{
-width:70%;
+width:75%;
 height:35px;
 margin:auto;
 background:linear-gradient(to bottom, #7b2cbf, #3c096c);
@@ -320,16 +322,13 @@ margin-top:15px;
 .container{
 padding:15px;
 }
-.row{
-flex-wrap:nowrap;
+.seat{
+width:26px;
+height:26px;
+font-size:9px;
 }
 .walkway{
-width:35px;
-}
-.seat{
-width:30px;
-height:30px;
-font-size:11px;
+width:25px;
 }
 .poster{
 width:180px;
