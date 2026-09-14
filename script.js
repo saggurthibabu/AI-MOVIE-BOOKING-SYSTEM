@@ -8,7 +8,7 @@ const posters = {
   "Kalki 2898 AD": "kalki.jpg",
   "OG": "og.jpg",
   "Spirit": "spirit.jpg",
-  "fauji": "fauji.jpg",
+  "fauzi": "fauzi.jpg",
   "Varanasi": "varanasi.jpg"
 };
 
