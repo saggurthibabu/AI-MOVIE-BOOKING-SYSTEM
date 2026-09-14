@@ -12,7 +12,7 @@
 
 <div class="container">
 
-<h1>🎬 AI Movie Ticket Booking System</h1>
+<h1>AI Movie Ticket Booking System</h1>
 
 <!-- ==========================
      STEP 1: Movie Selection
@@ -100,10 +100,13 @@
      STEP 3: Theatre Seating
 ========================== -->
 <div class="step-section" id="step3">
-    <h2 align="center">🥇 FIRST CLASS (₹100)</h2>
+    <div class="class-header">BALCONY : ₹150</div>
+    <div id="balconyClass" class="seat-section"></div>
+
+    <div class="class-header">FIRST CLASS : ₹100</div>
     <div id="firstClass" class="seat-section"></div>
 
-    <h2 align="center">🥈 SECOND CLASS (₹73)</h2>
+    <div class="class-header">SECOND CLASS : ₹70</div>
     <div id="secondClass" class="seat-section"></div>
 
     <div class="legend">
@@ -112,16 +115,16 @@
         <div><span class="booked"></span>Occupied</div>
     </div>
 
+    <div class="screen-box">
+        <div class="screen"></div>
+        <p>SCREEN THIS WAY</p>
+    </div>
+
     <h3 class="ai-title">🤖 AI Recommended Seats</h3>
     <p id="bestSeat" class="recommendation">Select seats to get AI recommendation.</p>
 
     <h3 id="selectedSeats">🎟 Selected Seats : None</h3>
     <h2 id="priceDisplay">💰 Total Price : ₹0</h2>
-
-    <div class="screen-box">
-        <div class="screen"></div>
-        <p>SCREEN THIS WAY</p>
-    </div>
 
     <br>
     <div style="display: flex; justify-content: space-between;">
