@@ -78,7 +78,7 @@ let selectedSeats = [];
 window.onload = function () {
     let today = new Date().toISOString().split("T")[0];
     document.getElementById("date").min = today;
-    document.getElementById("date").value = "";
+    document.getElementById("date"].value = "";
 
     createSeats();
     showRecommendation();
@@ -106,27 +106,46 @@ function showRecommendation(){
 }
 
 function createSeats(){
-    createSection("firstClass", ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"], 100, 1, 11, 12, 22);
-    createSection("secondClass", ["P","Q","R","S","T"], 73, 1, 11, 12, 22);
+    // Balcony: A (28 seats -> left 14, right 14), B-C (26 seats -> left 13, right 13) - Price 150
+    createCustomSection("balconyClass", [
+        { row: "A", totalSeats: 28, leftEnd: 14, rightStart: 15, rightEnd: 28 },
+        { row: "B", totalSeats: 26, leftEnd: 13, rightStart: 14, rightEnd: 26 },
+        { row: "C", totalSeats: 26, leftEnd: 13, rightStart: 14, rightEnd: 26 }
+    ], 150);
+
+    // First Class: D (24 seats -> left 12, right 12), E to O (22 seats -> left 11, right 11) - Price 100
+    let firstClassRows = [];
+    firstClassRows.push({ row: "D", totalSeats: 24, leftEnd: 12, rightStart: 13, rightEnd: 24 });
+    ["E","F","G","H","I","J","K","L","M","N","O"].forEach(r => {
+        firstClassRows.push({ row: r, totalSeats: 22, leftEnd: 11, rightStart: 12, rightEnd: 22 });
+    });
+    createCustomSection("firstClass", firstClassRows, 100);
+
+    // Second Class: P to W (22 seats -> left 11, right 11) - Price 70
+    let secondClassRows = [];
+    ["P","Q","R","S","T","U","V","W"].forEach(r => {
+        secondClassRows.push({ row: r, totalSeats: 22, leftEnd: 11, rightStart: 12, rightEnd: 22 });
+    });
+    createCustomSection("secondClass", secondClassRows, 70);
 }
 
-function createSection(sectionId, rows, price, leftStart, leftEnd, rightStart, rightEnd){
+function createCustomSection(sectionId, rowsData, price){
     const section = document.getElementById(sectionId);
     section.innerHTML = "";
 
-    rows.forEach(function(row){
+    rowsData.forEach(function(item){
         const rowDiv = document.createElement("div");
         rowDiv.className = "row";
 
         const rowName = document.createElement("div");
         rowName.className = "row-name";
-        rowName.innerHTML = row;
+        rowName.innerHTML = item.row;
         rowDiv.appendChild(rowName);
 
         const left = document.createElement("div");
         left.className = "left";
-        for(let i = leftStart; i <= leftEnd; i++){
-            left.appendChild(createSeat(row + i, i, price));
+        for(let i = 1; i <= item.leftEnd; i++){
+            left.appendChild(createSeat(item.row + i, i, price));
         }
 
         const walkway = document.createElement("div");
@@ -134,8 +153,8 @@ function createSection(sectionId, rows, price, leftStart, leftEnd, rightStart, r
 
         const right = document.createElement("div");
         right.className = "right";
-        for(let i = rightStart; i <= rightEnd; i++){
-            right.appendChild(createSeat(row + i, i, price));
+        for(let i = item.rightStart; i <= item.rightEnd; i++){
+            right.appendChild(createSeat(item.row + i, i, price));
         }
 
         rowDiv.appendChild(left);
