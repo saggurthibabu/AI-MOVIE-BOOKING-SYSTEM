@@ -115,44 +115,16 @@
         <div><span class="booked"></span>Occupied</div>
     </div>
 
-    <!-- ==========================================
-         UPDATED 3D CURVED SCREEN WITH BORDER WRAP
-         ========================================== -->
     <div class="screen-box">
-        <svg class="curved-screen" viewBox="0 0 1000 250" preserveAspectRatio="none">
+        <svg class="curved-screen" viewBox="0 0 1000 100" preserveAspectRatio="none">
             <defs>
-                <!-- Border Outline Gradient -->
-                <linearGradient id="borderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#a78bfa" />
-                    <stop offset="100%" stop-color="#9333ea" />
-                </linearGradient>
-                <!-- Main Inner Panel Gradient -->
-                <linearGradient id="screenTopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#c084fc" />
-                    <stop offset="100%" stop-color="#b177f5" />
-                </linearGradient>
-                <!-- 3D Depth Bottom Border Gradient -->
-                <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stop-color="#a78bfa" />
                     <stop offset="100%" stop-color="#7c3aed" />
                 </linearGradient>
             </defs>
-
-            <!-- Layer 1: Bottom 3D Thick Edge -->
-            <path d="M 50,75 Q 500,125 950,75 L 995,190 Q 500,240 5,190 Z" fill="url(#edgeGrad)" />
-            
-            <!-- Layer 2: Main Outer Graphic Panel -->
-            <path d="M 120,40 Q 500,85 880,40 L 950,175 Q 500,225 50,175 Z" fill="url(#screenTopGrad)" />
-            
-            <!-- Layer 3: Outer Purple Highlight Ring -->
-            <path d="M 120,40 Q 500,85 880,40 L 950,175 Q 500,225 50,175 Z" 
-                  fill="none" stroke="url(#borderGrad)" stroke-width="12" stroke-linejoin="round" />
-                  
-            <!-- Layer 4: Inner White Contrast Trim Curve -->
-            <path d="M 115,48 Q 500,92 885,48 L 940,170 Q 500,219 60,170 Z" 
-                  fill="none" stroke="#ffffff" stroke-width="3" opacity="0.9" />
+            <path d="M 100,20 Q 500,60 900,20 L 890,75 Q 500,115 110,75 Z" fill="url(#screenGrad)" />
         </svg>
-        <p class="screen-text">SCREEN THIS WAY</p>
     </div>
 
     <h3 class="ai-title">🤖 AI Recommended Seats</h3>
